@@ -1,20 +1,31 @@
 {% extends "template.html" %}
 {% block conteudo %}
-      <form action="/criar" method="post">
+   <a class="btn btn-primary" href="{{ url_for('listar') }}">Lista</a>
+    <form action="{{ url_for('criar') }}" method="post" enctype="multipart/form-data">
+        <figure class="thumb col-md-4">
+            <img class="img-responsive" src="{{ url_for('imagem', nome_arquivo='capa_padrao.jpg') }}">
+            <figcaption>
+                <label class="fileContainer">
+                    Mudar capa
+                    <input type="file" name="arquivo" accept=".jpg">
+                </label>
+            </figcaption>
+        </figure>
         <fieldset>
           <div class="form-group">
-            <label for="nome">Nome</label>
+            <label for="nome">Palavra</label>
             <input type="text" id="nome" name="nome" class="form-control">
           </div>
           <div class="form-group">
-            <label for="categoria">Categoria</label>
+            <label for="categoria">Tradução</label>
             <input type="text" id="categoria" name="categoria" class="form-control">
           </div>
           <div class="form-group">
-            <label for="console">Console</label>
+            <label for="console">Exemplo</label>
             <input type="text" id="console" name="console" class="form-control">
           </div>
           <button type="submit" class="btn btn-primary btn-salvar">Salvar</button>
+          <a class="btn btn-danger" href="{{ url_for('index') }}">Voltar</a>
         </fieldset>
-      </form>
+    </form>
 {% endblock %}
